@@ -1,7 +1,18 @@
 import React, { Component } from "react"
+import Search from "./Search"
 
-export default class content extends Component {
+export default class Content extends Component {
   render() {
-    return <div id="contents"></div>
+    var _nowPage = this.props.nowPage
+    var data = this.props.data
+    var contentType = this.props.type
+    var contentEl
+
+    return (
+      <div id="contents">
+        <Search></Search>
+        {contentEl}
+      </div>
+    )
   }
 }

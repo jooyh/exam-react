@@ -1,65 +1,72 @@
 import React, { Component } from "react"
 
-export default class Nav extends Component {
+class Nav extends Component {
+  shouldComponentUpdate(newProps, newState) {
+    return newProps.nowMenu !== this.props.nowMenu
+  }
+
   render() {
+    var menuList = this.props.menuList
+    var nowMenu = this.props.nowMenu
+    var clickCb = this.props.onclickMenu
+    console.log("NAV RENDERING...", nowMenu)
+    var menuEl = []
+    for (var i in menuList) {
+      menuEl.push(
+        <li
+          key={i}
+          onClick={function (e) {
+            e.target.parentNode.classList.toggle("active")
+          }}
+          className={menuList[i].menuId === nowMenu.parMenuId ? "active" : ""}
+        >
+          <strong>{menuList[i].menuNm}</strong>
+          <MenuItem
+            onclickMenu={clickCb}
+            childMenuList={menuList[i].childMenuItem}
+            nowMenu={nowMenu}
+          ></MenuItem>
+        </li>
+      )
+    }
+
     return (
       <div className="left-navi">
-        <ul className="lst">
-          <li className="active">
-            <strong>콜뷰티APP 관리</strong>
-            <ul>
-              <li>
-                <a href="#">공지사항관리</a>
-              </li>
-              <li className="active">
-                <a href="#">시스템공지관리</a>
-              </li>
-              <li>
-                <a href="#">FAQ관리</a>
-              </li>
-              <li>
-                <a href="#">약관관리</a>
-              </li>
-              <li>
-                <a href="#">APP버전관리</a>
-              </li>
-              <li>
-                <a href="#">팝업관리</a>
-              </li>
-              <li>
-                <a href="#">APP푸시메시지발송</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <strong>매칭 관리</strong>
-            <ul>
-              <li>
-                <a href="#">매칭관리</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <strong>회원 관리</strong>
-            <ul>
-              <li>
-                <a href="#">회원관리</a>
-              </li>
-              <li>
-                <a href="#">SHOP회원관리</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <strong>관리자 관리</strong>
-            <ul>
-              <li>
-                <a href="#">관리자 관리</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
+        <ul className="lst">{menuEl}</ul>
       </div>
     )
   }
 }
+
+class MenuItem extends Component {
+  render() {
+    var menuList = this.props.childMenuList
+    var nowMenu = this.props.nowMenu
+    var clickCb = this.props.onclickMenu
+    var menuEl = []
+
+    for (var i in menuList) {
+      if (menuList[i].menuId === nowMenu.menuId) {
+        console.log("TEST", menuList[i].menuId, nowMenu.menuId)
+      }
+      menuEl.push(
+        <li key={"sub" + i} className={menuList[i].menuId === nowMenu.menuId ? "active" : ""}>
+          <a
+            href="#"
+            data-id={menuList[i].menuId}
+            onClick={function (e) {
+              e.preventDefault()
+              e.stopPropagation()
+              clickCb(e.target.dataset.id)
+            }}
+          >
+            {menuList[i].menuNm}
+          </a>
+        </li>
+      )
+    }
+    return <ul className="lst">{menuEl}</ul>
+  }
+}
+
+export default Nav

@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+#root {
+  height: 100%;
+}
+
 /* INIT ******************************************************/
 html,
 body {
@@ -415,12 +419,7 @@ input[type="checkbox"]:checked + label span {
   clear: both;
 }
 #container {
-  position: absolute;
-  top: 87px;
-  right: 0;
-  left: 0;
-  min-height: calc(100% - 87px);
-  padding: 20px 20px 100px;
+  height: 100%;
   background: #f3f4f6;
 }
 #container:after {
@@ -504,6 +503,7 @@ header .fr .btn-logout {
 .left-navi {
   float: left;
   width: 240px;
+  height: calc(100% - 87px);
   border-radius: 5px;
   background: #cacdd2;
   padding: 0 10px 20px;
@@ -682,7 +682,9 @@ header .fr .btn-logout {
   clear: both;
 }
 .tit-box {
-  padding: 15px 0;
+  float: left;
+  width: calc(100% - 240px);
+  padding: 15px;
   border-bottom: 1px solid #9c9c9c;
 }
 .tit-box .location-list {
