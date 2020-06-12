@@ -8,6 +8,7 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      changePageFlag: false,
       nowMenu: { menuId: 2, menuNm: "시스템공지관리", depth: 2, parMenuId: 1 },
       loginInfo: {
         userId: "siwan",
@@ -35,45 +36,6 @@ export default class App extends Component {
           ],
         },
       ],
-      contentType: "list",
-      contentData: [
-        {
-          id: 1,
-          frDate: "20200520",
-          toDate: "20200905",
-          title: "테스트1",
-          os: "Android",
-          writer: "주영현",
-          regDate: "20200520",
-        },
-        {
-          id: 1,
-          frDate: "20200520",
-          toDate: "20200905",
-          title: "테스트2",
-          os: "Android",
-          writer: "주영현",
-          regDate: "20200520",
-        },
-        {
-          id: 1,
-          frDate: "20200520",
-          toDate: "20200905",
-          title: "테스트3",
-          os: "Android",
-          writer: "주영현",
-          regDate: "20200520",
-        },
-        {
-          id: 1,
-          frDate: "20200520",
-          toDate: "20200905",
-          title: "테스트4",
-          os: "Android",
-          writer: "주영현",
-          regDate: "20200520",
-        },
-      ],
     }
   }
 
@@ -97,15 +59,16 @@ export default class App extends Component {
           nowMenu={this.state.nowMenu}
           onclickMenu={function (menuId) {
             var selectedMenu = this.getMenuObj(menuId)
-            console.log("SM", selectedMenu)
-            this.setState(Object.assign({}, this.state, { nowMenu: selectedMenu }))
+            this.setState(
+              Object.assign({}, this.state, { nowMenu: selectedMenu, changePageFlag: true })
+            )
           }.bind(this)}
         ></Nav>
         <Title menuInfo={this.state.nowMenu}></Title>
         <Content
+          loginInfo={this.state.loginInfo}
           nowMenu={this.state.nowMenu}
-          type={this.state.contentType}
-          data={this.state.contentData}
+          changePageFlag={this.state.changePageFlag}
         ></Content>
       </div>
     )

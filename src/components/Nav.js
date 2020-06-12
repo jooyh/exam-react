@@ -46,9 +46,6 @@ class MenuItem extends Component {
     var menuEl = []
 
     for (var i in menuList) {
-      if (menuList[i].menuId === nowMenu.menuId) {
-        console.log("TEST", menuList[i].menuId, nowMenu.menuId)
-      }
       menuEl.push(
         <li key={"sub" + i} className={menuList[i].menuId === nowMenu.menuId ? "active" : ""}>
           <a

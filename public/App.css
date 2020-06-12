@@ -716,7 +716,7 @@ header .fr .btn-logout {
   font-size: 0;
   width: 16px;
   height: 15px;
-  background: url(/common/icon_home.png) no-repeat center;
+  background: url(../public/common/images/common/icon_home.png) no-repeat center;
   background-size: cover;
   vertical-align: middle;
 }
@@ -732,10 +732,11 @@ header .fr .btn-logout {
   float: left;
   margin-right: 10px;
 }
-.date-picker-box .datepicker {
+/* .date-picker-box .datepicker {
   width: 205px;
-  background: url(/common/icon_datePicker.png) no-repeat center right 7px / 20px #fff;
-}
+  background: url(../public/common/images/common/icon_datePicker.png) no-repeat center right 7px /
+    20px #fff;
+} */
 .hyphen {
   margin: 0 10px;
   font-size: 14px;
@@ -981,21 +982,21 @@ header .fr .btn-logout {
   background-position: center;
 }
 .paging-box a.nav.prev_02 {
-  background-image: url(/common/icon_paging_prev02.png);
+  background-image: url(../public/common/images/common/con_paging_prev02.png);
   background-size: 10px 12px;
 }
 .paging-box a.nav.prev_01 {
   margin-right: 5px;
-  background-image: url(/common/icon_paging_prev01.png);
+  background-image: url(../public/common/images/common/icon_paging_prev01.png);
   background-size: 6px 12px;
 }
 .paging-box a.nav.next_01 {
   margin-left: 5px;
-  background-image: url(/common/icon_paging_next01.png);
+  background-image: url(../public/common/images/common/icon_paging_next01.png);
   background-size: 6px 12px;
 }
 .paging-box a.nav.next_02 {
-  background-image: url(/common/icon_paging_next02.png);
+  background-image: url(../public/common/images/common/icon_paging_next02.png);
   background-size: 10px 12px;
 }
 .paging-box a.active {
@@ -1072,7 +1073,7 @@ header .fr .btn-logout {
 }
 .check-box .check input[type="checkbox"]:checked + label:before {
   border-color: #12cdc2;
-  background: url(/common/icon_checkbox.png) no-repeat;
+  background: url(../public/common/images/common/icon_checkbox.png) no-repeat;
   background-size: cover;
 }
 .check-box.onlyOne .check {
@@ -1125,7 +1126,7 @@ header .fr .btn-logout {
   height: 33px;
   margin-right: 0;
   border-color: #868686;
-  background: url(/common/btn_del.png) no-repeat center / 11px #868686;
+  background: url(../public/common/images/common/btn_del.png) no-repeat center / 11px #868686;
   font-size: 0;
   vertical-align: middle;
 }
@@ -1138,7 +1139,7 @@ header .fr .btn-logout {
 }
 .file-item .tit {
   padding-left: 21px;
-  background: url(/common/icon_file.png) no-repeat left center / 14px 15px;
+  background: url(../public/common/images/common/icon_file.png) no-repeat left center / 14px 15px;
   font-size: 16px;
   font-weight: 400;
   color: #747474;
@@ -1158,7 +1159,7 @@ header .fr .btn-logout {
 .notice-txt {
   margin-top: 5px;
   padding-left: 30px;
-  background: url(/common/icon_notice.png) no-repeat left center / 21px;
+  background: url(../public/common/images/common/icon_notice.png) no-repeat left center / 21px;
   font-size: 14px;
   color: #868686;
 }
@@ -1260,7 +1261,7 @@ header .fr .btn-logout {
   float: right;
   width: 33px;
   height: 33px;
-  background: url(/common/btn_popClose.png) no-repeat center / 23px;
+  background: url(../public/common/images/common/btn_popClose.png) no-repeat center / 23px;
   font-size: 0;
 }
 .popup-wrap .pop-body {
@@ -1339,8 +1340,8 @@ header .fr .btn-logout {
   border: none;
 }
 .ui-datepicker .ui-datepicker-prev {
-  background-image: url(/common/icon_paging_prev01.png);
+  background-image: url(../public/common/images/common/icon_paging_prev01.png);
 }
 .ui-datepicker .ui-datepicker-next {
-  background-image: url(/common/icon_paging_next01.png);
+  background-image: url(../public/common/images/common/icon_paging_next01.png);
 }
