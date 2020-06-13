@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import DatePicker from "react-datepicker"
+import Radio from "./inputComponents/Radio"
 import "react-datepicker/dist/react-datepicker.css"
 
 export default class WriteContent extends Component {
@@ -10,6 +11,7 @@ export default class WriteContent extends Component {
       toDate: props.data ? new Date(this.props.data.toDate) : new Date(),
       frMaxDate: null,
       toMaxDate: null,
+      data: props.data,
     }
   }
 
@@ -28,6 +30,12 @@ export default class WriteContent extends Component {
         frDate: this.state.frDate > date ? date : this.state.frDate,
       })
     )
+  }
+
+  handlerChangeForInput = (e) => {
+    var _data = Object.assign({}, this.state.data)
+    _data[e.target.name] = e.target.value
+    this.setState(Object.assign({}, this.state, { data: _data }))
   }
 
   render() {
@@ -69,7 +77,8 @@ export default class WriteContent extends Component {
                     type="text"
                     name="title"
                     className="w-full"
-                    value={this.props.data ? this.props.data.title : ""}
+                    value={this.state.data ? this.state.data.title : ""}
+                    onChange={this.handlerChangeForInput}
                   ></input>
                 </td>
               </tr>
@@ -78,38 +87,23 @@ export default class WriteContent extends Component {
                   내용<span className="required">*</span>
                 </th>
                 <td>
-                  <textarea className="editor-area" name="desc">
-                    {this.props.data ? this.props.data.desc : ""}
-                  </textarea>
+                  <textarea
+                    className="editor-area"
+                    name="desc"
+                    onChange={this.handlerChangeForInput}
+                    value={this.state.data ? this.state.data.desc : ""}
+                  ></textarea>
                 </td>
               </tr>
-              <tr>
-                <th>
-                  OS<span className="required">*</span>
-                </th>
-                <td>
-                  <div className="radio-box">
-                    <span className="radio">
-                      <input
-                        type="radio"
-                        id="notice-r01"
-                        name="os"
-                        value="ALL"
-                        defaultChecked={true}
-                      ></input>
-                      <label htmlFor="notice-r01">전체</label>
-                    </span>
-                    <span className="radio">
-                      <input type="radio" id="notice-r02" name="os" value="IOS"></input>
-                      <label htmlFor="notice-r02">IOS</label>
-                    </span>
-                    <span className="radio">
-                      <input type="radio" id="notice-r03" name="os" value="Android"></input>
-                      <label htmlFor="notice-r03">Android</label>
-                    </span>
-                  </div>
-                </td>
-              </tr>
+              <Radio
+                data={[
+                  { name: "전체", value: "all", key: "all" },
+                  { name: "Android", value: "and", key: "Android" },
+                  { name: "IOS", value: "ios", key: "IOS" },
+                ]}
+                default={this.state.data ? this.state.data.os : "all"}
+                name={"os"}
+              ></Radio>
               <tr>
                 <th>
                   적용일자<span className="required">*</span>

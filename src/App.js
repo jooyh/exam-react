@@ -8,7 +8,6 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      changePageFlag: false,
       nowMenu: { menuId: 2, menuNm: "시스템공지관리", depth: 2, parMenuId: 1 },
       loginInfo: {
         userId: "siwan",
@@ -39,6 +38,8 @@ export default class App extends Component {
     }
   }
 
+  pageChangeFlag = false
+
   getMenuObj(menuId) {
     var menuList = this.state.menuList
     for (var i in menuList) {
@@ -59,16 +60,15 @@ export default class App extends Component {
           nowMenu={this.state.nowMenu}
           onclickMenu={function (menuId) {
             var selectedMenu = this.getMenuObj(menuId)
-            this.setState(
-              Object.assign({}, this.state, { nowMenu: selectedMenu, changePageFlag: true })
-            )
+            this.pageChangeFlag = true
+            this.setState(Object.assign({}, this.state, { nowMenu: selectedMenu }))
           }.bind(this)}
         ></Nav>
         <Title menuInfo={this.state.nowMenu}></Title>
         <Content
           loginInfo={this.state.loginInfo}
           nowMenu={this.state.nowMenu}
-          changePageFlag={this.state.changePageFlag}
+          pageChangeFlag={this.pageChangeFlag}
         ></Content>
       </div>
     )

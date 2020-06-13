@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
+import Radio from "./inputComponents/Radio"
 
 export default class Search extends Component {
   constructor(props) {
@@ -83,30 +84,15 @@ export default class Search extends Component {
                   </div>
                 </td>
               </tr>
-              <tr>
-                <th>OS</th>
-                <td>
-                  <div className="radio-box">
-                    <span className="radio">
-                      <input
-                        type="radio"
-                        id="notice-r01"
-                        name="notice-r"
-                        defaultChecked={true}
-                      ></input>
-                      <label htmlFor="notice-r01">전체</label>
-                    </span>
-                    <span className="radio">
-                      <input type="radio" id="notice-r02" name="notice-r"></input>
-                      <label htmlFor="notice-r02">IOS</label>
-                    </span>
-                    <span className="radio">
-                      <input type="radio" id="notice-r03" name="notice-r"></input>
-                      <label htmlFor="notice-r03">Android</label>
-                    </span>
-                  </div>
-                </td>
-              </tr>
+              <Radio
+                data={[
+                  { name: "전체", value: "all", key: "all" },
+                  { name: "Android", value: "and", key: "Android" },
+                  { name: "IOS", value: "ios", key: "IOS" },
+                ]}
+                default={this.state.data ? this.state.data.os : "all"}
+                name={"os"}
+              ></Radio>
               <tr>
                 <th>검색어</th>
                 <td>
