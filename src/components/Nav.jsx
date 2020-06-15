@@ -1,15 +1,11 @@
 import React, { Component } from "react"
 
 class Nav extends Component {
-  shouldComponentUpdate(newProps, newState) {
-    return newProps.nowMenu !== this.props.nowMenu
-  }
-
   render() {
     var menuList = this.props.menuList
     var nowMenu = this.props.nowMenu
-    var clickCb = this.props.onclickMenu
-    console.log("NAV RENDERING...", nowMenu)
+
+    console.log("NAV RENDERING...", menuList)
     var menuEl = []
     for (var i in menuList) {
       menuEl.push(
@@ -21,11 +17,7 @@ class Nav extends Component {
           className={menuList[i].menuId === nowMenu.parMenuId ? "active" : ""}
         >
           <strong>{menuList[i].menuNm}</strong>
-          <MenuItem
-            onclickMenu={clickCb}
-            childMenuList={menuList[i].childMenuItem}
-            nowMenu={nowMenu}
-          ></MenuItem>
+          <MenuItem childMenuList={menuList[i].childMenuItem} nowMenu={nowMenu}></MenuItem>
         </li>
       )
     }

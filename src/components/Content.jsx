@@ -17,26 +17,26 @@ export default class Content extends Component {
     }
   }
 
-  getDataList = async function (query) {
-    if (query === undefined) query = ""
-    console.log("REQ", `/v1/search/shop.json?query=${query}`)
-    fetch(`/v1/search/shop.json?query=${query}`, {
-      method: "GET",
-      headers: {
-        "X-Naver-Client-Id": "AxD33VNlEAMOx9w9IPBv",
-        "X-Naver-Client-Secret": "1qZgSs3d6l",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        console.log("API Call", response)
-        this.setState(Object.assign({}, this.state, { contentData: response.items }))
-      })
-      .catch((error) => {
-        console.log("API Call error:" + error)
-      })
-  }.bind(this)
+  // getDataList = async function (query) {
+  //   if (query === undefined) query = ""
+  //   console.log("REQ", `/v1/search/shop.json?query=${query}`)
+  //   fetch(`/v1/search/shop.json?query=${query}`, {
+  //     method: "GET",
+  //     headers: {
+  //       "X-Naver-Client-Id": "AxD33VNlEAMOx9w9IPBv",
+  //       "X-Naver-Client-Secret": "1qZgSs3d6l",
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((response) => {
+  //       console.log("API Call", response)
+  //       this.setState(Object.assign({}, this.state, { contentData: response.items }))
+  //     })
+  //     .catch((error) => {
+  //       console.log("API Call error:" + error)
+  //     })
+  // }.bind(this)
 
   render() {
     if (this.state.contentType === "list") {
