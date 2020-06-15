@@ -1,11 +1,12 @@
 import React, { Component } from "react"
-import Search from "./Search"
+import Search from "../Search"
 
 export default class ListContent extends Component {
   render() {
     var data = this.props.data
-    var totCnt = this.props.data.length
+    var totCnt = this.props.data ? this.props.data.length : 0
     var contents = []
+    console.log("DATA", data)
     for (var i in data) {
       contents.push(
         <tr
@@ -29,15 +30,19 @@ export default class ListContent extends Component {
     }
     if (!totCnt) {
       contents.push(
-        <tr>
-          <td colspan={6}>데이터가 없습니다.</td>
+        <tr key={0}>
+          <td colSpan={6}>데이터가 없습니다.</td>
         </tr>
       )
     }
 
     return (
       <div className="listContent">
-        <Search></Search>
+        <Search
+          onSearch={function (qeury) {
+            this.props.onSearch(qeury)
+          }.bind(this)}
+        ></Search>
         <span className="tbl-total">
           전체 : <strong>121</strong> 건
         </span>
@@ -65,26 +70,6 @@ export default class ListContent extends Component {
           </table>
         </div>
         <div className="btn-area">
-          <div className="paging-box">
-            <a href="#" className="nav prev_02">
-              처음목록
-            </a>
-            <a href="#" className="nav prev_01">
-              이전목록
-            </a>
-            <a href="#" className="active">
-              1
-            </a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#" className="nav next_01">
-              처음목록
-            </a>
-            <a href="#" className="nav next_02">
-              이전목록
-            </a>
-          </div>
           <button
             onClick={function () {
               this.props.regClick()

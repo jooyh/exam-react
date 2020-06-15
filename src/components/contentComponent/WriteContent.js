@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import DatePicker from "react-datepicker"
-import Radio from "./inputComponents/Radio"
+import Radio from "../inputComponents/Radio"
 import "react-datepicker/dist/react-datepicker.css"
 
 export default class WriteContent extends Component {

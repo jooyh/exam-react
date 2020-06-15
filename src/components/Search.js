@@ -33,16 +33,12 @@ export default class Search extends Component {
 
   render() {
     return (
-      <div
-        className="table-area"
-        onLoad={function () {
-          document.querySelectorAll(".datepicker")
-        }}
-      >
+      <div className="table-area">
         <form
           onSubmit={function (e) {
-            console.log(e.target)
-          }}
+            e.preventDefault()
+            this.props.onSearch(e.target.qeruy.value)
+          }.bind(this)}
         >
           <table className="tbl row-type searchSt">
             <colgroup>
@@ -96,7 +92,7 @@ export default class Search extends Component {
               <tr>
                 <th>검색어</th>
                 <td>
-                  <input type="text"></input>
+                  <input type="text" name="qeruy"></input>
                   <button type="submit" className="btn btn-primary">
                     검색
                   </button>
