@@ -89,5 +89,16 @@ export default createStore(function (state, action) {
     return { ...state, contentType: action.contentType, curContentData: action.curContentData }
   }
 
+  if (action.type === "UPDATE_DATA") {
+    console.log("TEST", action)
+    var dataList = state.contentData.dataList.concat()
+    for (var i in dataList) {
+      if (dataList[i].id === action.data.id) {
+        dataList[i] = action.data
+      }
+    }
+    return { ...state, contentType: "detail", curContentData: action.data }
+  }
+
   return state
 }, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())

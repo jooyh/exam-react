@@ -1,5 +1,6 @@
 import WriteContent from "../components/content/WriteContent"
 import { connect } from "react-redux"
+import store from "../store/store"
 
 const stateToProps = function (state) {
   return { data: state.curContentData }
@@ -7,9 +8,8 @@ const stateToProps = function (state) {
 
 const dispatchToProps = function (dispatch) {
   return {
-    submit: function (data) {
-      console.log("SUBMIT", data)
-      dispatch({ type: "CONTENT_CHANGE", contentType: "list" })
+    submit: function (_data) {
+      dispatch({ type: "UPDATE_DATA", data: _data })
     },
     concel: function () {
       dispatch({ type: "CONTENT_CHANGE", contentType: "list" })
