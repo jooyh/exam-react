@@ -3,18 +3,6 @@ import React, { Component } from "react"
 export default class DetailContent extends Component {
   render() {
     var _data = this.props.data
-    var subTitle
-
-    console.log("DetailContent", this.props)
-
-    if (this.props.contentType === "detail") {
-      subTitle = "상세보기"
-    } else if (this.props.contentType === "write") {
-      subTitle = "등록하기"
-    } else if (this.props.contentType === "modify") {
-      subTitle = "수정하기"
-    }
-
     return (
       <div>
         <div className="table-area">
@@ -56,7 +44,7 @@ export default class DetailContent extends Component {
             type="button"
             className="btn btn-secondary"
             onClick={function () {
-              this.props.listClick()
+              this.props.goList()
             }.bind(this)}
           >
             목록
@@ -65,10 +53,19 @@ export default class DetailContent extends Component {
             type="button"
             className="btn btn-primary"
             onClick={function () {
-              this.props.modifyClick()
+              this.props.updateContent(_data)
             }.bind(this)}
           >
             수정
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={function () {
+              this.props.deleteContent(_data.id)
+            }.bind(this)}
+          >
+            삭제
           </button>
         </div>
       </div>
